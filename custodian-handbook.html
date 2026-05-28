@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custodian Handbook</title>
+<style>
+/* ── Google Fonts (Lora) ── */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+/* ── Reset ── */
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,code,em,img,
+ol,ul,li,fieldset,form,label,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,details,figcaption,figure,footer,header,nav,section,summary {
+    margin:0; padding:0; border:0; font:inherit; font-size:100%; vertical-align:baseline;
+}
+article,aside,details,figcaption,figure,footer,header,nav,section { display:block; }
+body { line-height:1; margin:0; }
+ol,ul { list-style:none; }
+blockquote,q { quotes:none; }
+table { border-collapse:collapse; border-spacing:0; }
+button { all:unset; cursor:pointer; }
+a,a:visited { text-decoration:none; }
+
+/* ── Typography ── */
+body {
+    font-family: Lora, ui-sans-serif, system-ui, sans-serif;
+    background-color: oklch(98.5% .002 247.839deg);
+    color: oklch(44.6% .03 256.802deg);
+}
+h1 { color:#000; font-weight:700; font-size:60px; }
+h2 {
+    font-weight:700; font-size:30px; line-height:36px;
+    color:oklch(21% .034 264.665deg); margin-bottom:20px;
+}
+h3 {
+    font-size:20px; color:oklch(21% .034 264.665deg); font-weight:600;
+    margin-top:28px; margin-bottom:10px;
+}
+h4 {
+    font-size:16px; font-weight:600; color:oklch(21% .034 264.665deg);
+    margin-top:20px; margin-bottom:6px;
+}
+p {
+    color:oklch(44.6% .03 256.802deg); line-height:24px; font-size:16px;
+    margin-bottom:16px;
+}
+p:last-child { margin-bottom:0; }
+a  { color:oklch(54.6% .245 262.881deg); font-weight:500; }
+a:hover { text-decoration:underline; }
+strong { font-weight:700; }
+em { font-style:italic; }
+
+/* ── Code blocks ── */
+pre, code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                 "liberation mono", "courier new", monospace;
+    font-size: 13px;
+    line-height: 20px;
+}
+pre {
+    background-color: oklch(21% .034 264.665deg);
+    color: oklch(93.2% .032 255.585deg);
+    border-radius: 10px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 16px 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+code {
+    background-color: oklch(93.2% .032 255.585deg);
+    color: oklch(37.3% .034 259.733deg);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* ── Lists ── */
+.docs-page-container ul,
+.docs-page-container ol {
+    padding-left: 24px;
+    margin-bottom: 16px;
+}
+.docs-page-container ul { list-style: disc; }
+.docs-page-container ol { list-style: decimal; }
+.docs-page-container li {
+    color: oklch(44.6% .03 256.802deg);
+    line-height: 24px;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* ── Blockquote → note box ── */
+.docs-page-container blockquote {
+    background-color: #d6e8f6;
+    border-left: 4px solid #256a9f;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+}
+.docs-page-container blockquote p {
+    margin-bottom: 0;
+    color: oklch(21% .034 264.665deg);
+}
+
+/* ── Top nav bar ── */
+.navigation-bar {
+    position: fixed; top:0; left:0; width:100%;
+    z-index:1000; background-color:#fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,8%);
+    box-sizing: border-box;
+}
+.header-nav {
+    padding: 0 2rem; height:64px;
+    display:flex; align-items:center;
+    justify-content:space-between;
+    max-width:1280px; margin:0 auto;
+}
+.site-title {
+    font-weight:700; font-size:22px;
+    color:oklch(54.6% .245 262.881deg);
+}
+
+/* ── Main layout ── */
+main {
+    margin-top: 64px;
+    padding: 48px 24px;
+    background-color: oklch(98.5% .002 247.839deg);
+    min-height: calc(100vh - 64px);
+}
+.docs-wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 32px;
+    align-items: flex-start;
+}
+
+/* ── Sidebar ── */
+.docs-sidebar {
+    background-color: #fff;
+    padding: 20px 16px;
+    position: sticky;
+    top: 88px;
+    overflow-y: auto;
+    width: 240px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px solid oklch(92.8% .006 264.531deg);
+    box-shadow: rgba(0,0,0,5%) 0 4px 6px -1px;
+}
+.docs-sidebar h3 {
+    padding: 0 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: oklch(55.1% .027 264.364deg);
+    margin-bottom: 12px;
+    margin-top: 0;
+    line-height: 20px;
+}
+.docs-sidebar nav {
+    display:flex; flex-direction:column;
+}
+.docs-sidebar button {
+    padding: 8px 12px;
+    color: oklch(37.3% .034 259.733deg);
+    font-size: 15px; font-weight: 500;
+    line-height: 22px; border-radius: 8px;
+    text-align: left;
+    transition: color .15s, background-color .15s;
+}
+.docs-sidebar nav > button:not(:last-child) { margin-bottom:2px; }
+.active-sidebar-btn {
+    color: oklch(48.8% .243 264.376deg) !important;
+    background-color: oklch(93.2% .032 255.585deg) !important;
+    cursor: default;
+}
+.inactive-sidebar-btn:hover {
+    background-color: oklch(96.7% .003 264.542deg);
+    color: oklch(21% .034 264.665deg);
+}
+
+/* ── Content area ── */
+.docs-main-content {
+    width: 100%;
+    min-width: 0;
+}
+.docs-main-content > * {
+    margin-bottom: 48px;
+}
+.docs-main-content > :last-child {
+    margin-bottom: 0;
+}
+
+/* ── Section card ── */
+.docs-page-container {
+    background-color: #fff;
+    border-radius: 14px;
+    padding: 40px;
+    border: 1px solid oklch(92.8% .006 264.531deg);
+    box-shadow: rgba(0,0,0,4%) 0 4px 6px -1px;
+    scroll-margin-top: 88px;
+}
+.docs-page-container > h1:first-child,
+.docs-page-container > h2:first-child {
+    font-size: 26px;
+    font-weight: 700;
+    color: #256a9f;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #d6e8f6;
+    margin-top: 0;
+}
+
+/* ── Footer ── */
+.site-footer {
+    display:flex; align-items:center; justify-content:center;
+    background-color:#256a9f; padding:28px 0;
+}
+.site-footer p { color:#fff; font-size:14px; }
+
+/* ── Responsive ── */
+@media(max-width:768px) {
+    .docs-wrapper { flex-direction:column; }
+    .docs-sidebar {
+        position:static; width:100%; max-width:100%;
+        box-sizing:border-box;
+    }
+    .docs-page-container { padding:24px 20px; }
+    h1 { font-size:36px; }
+}
+</style>
+</head>
+<body>
+
+<div class="navigation-bar">
+  <nav class="header-nav">
+    <div>
+      <span class="site-title">Custodian Handbook</span>
+    </div>
+  </nav>
+</div>
+
+<main>
+  <div class="docs-wrapper">
+
+    <aside class="docs-sidebar">
+      <h3>Contents</h3>
+      <nav id="sidebar-nav">
+        <button class="active-sidebar-btn" onclick="scrollToSection('landing')">Introduction & Rights</button>
+        <button class="inactive-sidebar-btn" onclick="scrollToSection('administer-elsi')">Administer ELSI</button>
+        <button class="inactive-sidebar-btn" onclick="scrollToSection('onboard-student')">Onboard a New Student</button>
+        <button class="inactive-sidebar-btn" onclick="scrollToSection('cite-data')">Cite ExELang Data</button>
+        <button class="inactive-sidebar-btn" onclick="scrollToSection('add-tools')">Add Tools to Server</button>
+      </nav>
+    </aside>
+
+    <div class="docs-main-content" id="main-content">
+      <section id="landing" class="docs-page-container">
+  <h1 id="custodian-handbook">Custodian Handbook</h1>
+<p>Welcome to the Custodian Handbook. This document is intended for custodian collaborators of the ExELang project. It is meant to help researchers, research assistants, engineers and students, as well as help with onboarding new team members. It contains resources about rights and responsibilities as a custodian and data user, and provides step-by-step instructions for the most common tasks in our workflow.</p>
+<h2 id="rights-responsibilities">Rights &amp; Responsibilities</h2>
+<p>All collaborators must be aware of the project's official policies and agreements on data access, ethics, and authorship.</p>
+<ul>
+<li><a href="https://elsi-lscp.ddns.net/docs">Participant Rights &amp; Data Ethics Policy</a> — covers informed consent, participant confidentiality, and GDPR/local compliance obligations.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> If you are a new collaborator and have not yet signed the Data Sharing Agreement, please contact the project coordinator before proceeding with any of the steps below.</p>
+</blockquote>
+<h3 id="data-access">Data Access</h3>
+<p>The project data is shared through three archives: <a href="https://homebank.talkbank.org">HomeBank</a>, <a href="https://databrary.org">Databrary</a>, and <a href="https://archive.mpi.nl">The Language Archive</a>. As a custodian, you have been granted access to this data through one of those platforms. You must comply with the conditions listed in the relevant platform agreement:</p>
+<ul>
+<li><a href="https://homebank.talkbank.org/about/goals.html">HomeBank User Agreement</a></li>
+<li><a href="https://databrary.org/about/agreement.html">Databrary Access Agreement</a></li>
+<li><a href="https://archive.mpi.nl/tla/ims/terms-of-use">The Language Archive Terms of Use</a></li>
+</ul>
+<h3 id="data-storage-security">Data Storage &amp; Security</h3>
+<p>Data storage is the responsibility of the custodians. You must ensure the security and integrity of the data you hold, and coordinate with other custodians to maintain consistent standards across sites. This includes secure storage, access controls, and regular backups.</p>
+<h3 id="data-usage">Data Usage</h3>
+<p>Usage of the data is restricted to the training and evaluation of machine learning models. The data cannot be shared with or released to other collaborators unless they formally join the custodian group and agree to the same terms.</p>
+<h3 id="models-open-science">Models &amp; Open Science</h3>
+<p>Models created using this data must be made open source and shared in accordance with open science principles. This includes sharing model weights, training configurations, and evaluation results through appropriate public repositories.</p>
+<h3 id="authorship-attribution">Authorship &amp; Attribution</h3>
+<p>Data contributors who initially collected and shared the data will be made co-authors of any papers produced using this data, or credited in accordance with their choice as stated in their original data sharing agreement. This must be verified before submitting any manuscript.</p>
+</section>
+
+      <section id="administer-elsi" class="docs-page-container">
+  <h1 id="how-to-administer-elsi">How to Administer ELSI</h1>
+<p>The ELSI (Early Language and Social Interaction) protocol is the core data collection instrument used across ExELang sites. Follow these steps carefully to ensure consistency across the project.</p>
+<h2 id="before-the-session">Before the Session</h2>
+<ol>
+<li><strong>Schedule the appointment</strong> — Book the session in the shared calendar at least 48 hours in advance. Include the participant ID (not their name) in the event title.</li>
+<li><strong>Prepare the materials</strong> — Print the ELSI stimulus booklet from the shared drive (<code>/Materials/ELSI/Stimuli_vX.X.pdf</code>). Confirm you have the correct version for the current data collection wave.</li>
+<li><strong>Check equipment</strong> — Test audio recording equipment at least 30 minutes before the session. Ensure battery levels are adequate and that storage media is blank.</li>
+<li><strong>Confirm consent</strong> — Verify that the participant's guardian has signed the informed consent form and that it is filed in the appropriate folder.</li>
+</ol>
+<h2 id="during-the-session">During the Session</h2>
+<ol>
+<li><strong>Introduction script</strong> — Read the standardised introduction verbatim (see <code>ELSI_Admin_Protocol.pdf</code>, p. 3). Do not deviate from the script.</li>
+<li><strong>Recording</strong> — Start the audio recorder before entering the room with the participant. Label the recording with the format: <code>SITECODE_PARTICIPANTID_YYYYMMDD</code>.</li>
+<li><strong>Scoring live</strong> — Use the paper scoring sheet during administration. Circle responses clearly. Do not make corrections with correction fluid — cross out and initial any errors.</li>
+<li><strong>Timing</strong> — Adhere strictly to item timing guidelines. Use a silent timer on your phone if needed.</li>
+</ol>
+<h2 id="after-the-session">After the Session</h2>
+<ol>
+<li><strong>Transfer recordings</strong> — Upload audio files to the secure server within 24 hours using the procedure in <a href="#how-to-add-new-tools-on-server">How to Add New Data to the Server</a>.</li>
+<li><strong>Enter scores</strong> — Enter paper scores into the REDCap database on the same day. Double-check entries before saving.</li>
+<li><strong>File paperwork</strong> — Scan consent forms and upload to the secure shared drive. Physical copies go in the locked cabinet.</li>
+<li><strong>Flag any anomalies</strong> — If anything unusual occurred during the session (interruption, participant distress, equipment failure), complete an Incident Note and email it to the PI.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> If this is your first time administering the ELSI, you must complete a reliability training session with a certified administrator and reach 85% agreement before collecting independent data.</p>
+</blockquote>
+</section>
+
+      <section id="onboard-student" class="docs-page-container">
+  <h1 id="how-to-onboard-a-new-student">How to Onboard a New Student</h1>
+<p>This guide is for supervisors and lab managers setting up access for a new student collaborator. Complete each step in order — some steps require waiting for account approvals before the next can begin.</p>
+<h2 id="step-1-institutional-prerequisites">Step 1 — Institutional Prerequisites</h2>
+<ol>
+<li><strong>Ethics training</strong> — The student must complete their institution's mandatory research ethics training (e.g. TCPS2 CORE, CITI Program, or equivalent). Send the supervisor a copy of the completion certificate.</li>
+<li><strong>Sign the Data Sharing Agreement</strong> — Provide the student with the current version from the project website and ensure it is returned signed before granting any data access.</li>
+<li><strong>Add to the team list</strong> — Email the project coordinator with the student's full name, institution, supervisor name, and anticipated end date so they can be added to the collaborators registry.</li>
+</ol>
+<h2 id="step-2-databrary-registration">Step 2 — Databrary Registration</h2>
+<p>Databrary is the primary platform for storing and sharing video data within ExELang.</p>
+<ol>
+<li>Go to <a href="https://databrary.org">https://databrary.org</a> and click <strong>Register</strong>.</li>
+<li>Select <strong>Affiliate</strong> as the account type (not Principal Investigator).</li>
+<li>When prompted for a sponsor, enter the PI's name and institutional email address. The PI will receive an authorisation request by email.</li>
+<li>The PI approves the request from their Databrary account under <strong>Manage Affiliates</strong>.</li>
+<li>Once approved, the student will receive a confirmation email. Ask them to forward it to the project coordinator.</li>
+<li>The coordinator will then grant access to the ExELang Databrary volume.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Databrary approval can take 2–5 business days. Plan onboarding accordingly.</p>
+</blockquote>
+<h2 id="step-3-server-tools-access">Step 3 — Server &amp; Tools Access</h2>
+<ol>
+<li><strong>Request a server account</strong> — Email the technical lead with the subject line <code>[ExELang] New user account request</code>. Include the student's full name, institution, and expected start date.</li>
+<li><strong>SSH key setup</strong> — Ask the student to generate an SSH key pair and send their public key to the technical lead. Instructions are in <code>Server_Access_Guide.pdf</code> on the shared drive.</li>
+<li><strong>REDCap access</strong> — Submit a REDCap access request through the institutional portal. Select the ExELang project and choose the <strong>Data Entry</strong> role for most students.</li>
+</ol>
+<h2 id="step-4-orientation-resources">Step 4 — Orientation Resources</h2>
+<p>Once accounts are set up, share the following with the new student:</p>
+<ul>
+<li>This training guide (the document you are reading now)</li>
+<li>The ExELang project website: <a href="https://exelang.org">https://exelang.org</a></li>
+<li>The shared drive folder: <code>ExELang &gt; Onboarding &gt; New Collaborator Starter Pack</code></li>
+<li>Schedule an introductory call with the PI or a senior team member within the first week</li>
+</ul>
+</section>
+
+      <section id="cite-data" class="docs-page-container">
+  <h1 id="how-to-cite-exelang-data-in-a-new-paper">How to Cite ExELang Data in a New Paper</h1>
+<p>Any publication, thesis, conference presentation, or preprint that uses ExELang data must follow these citation and disclosure guidelines. This protects participants, acknowledges contributors fairly, and maintains the project's data governance commitments.</p>
+<h2 id="before-you-submit">Before You Submit</h2>
+<ol>
+<li><strong>Notify the PI</strong> — Email the PI with a brief description of the paper (title, venue, authors, and which data subset you used) at least 4 weeks before submission. This is required regardless of whether the PI is a co-author.</li>
+<li><strong>Check the authorship policy</strong> — Review the <a href="https://exelang.org/authorship">Authorship &amp; Attribution Policy</a> on the project website. Co-authorship may be expected depending on the contribution level of other team members.</li>
+<li><strong>Confirm data version</strong> — Identify the exact version of the dataset you used (available in your analysis scripts or the REDCap export log) and include it in your methods section.</li>
+</ol>
+<h2 id="citing-the-dataset">Citing the Dataset</h2>
+<p>Use the following citation format for the ExELang dataset itself (in addition to any papers you cite):</p>
+<p><strong>APA format:</strong></p>
+<blockquote>
+<p>ExELang Consortium. (Year). <em>ExELang Cross-Linguistic Corpus</em> [Data set, Version X.X]. Databrary. https://doi.org/XXXXX</p>
+</blockquote>
+<p>The current DOI and version number are always available on the <a href="https://databrary.org/exelang">Databrary volume page</a>.</p>
+<p>For papers that used Databrary-hosted video data specifically, also add:</p>
+<blockquote>
+<p>Data were shared via Databrary (Adolph et al., 2017). Access was authorised under the ExELang project (Volume XXXX).</p>
+</blockquote>
+<h2 id="in-the-methods-section">In the Methods Section</h2>
+<p>Include the following elements:</p>
+<ul>
+<li>The name and version of the dataset</li>
+<li>The specific subset used (e.g. language, age group, collection wave)</li>
+<li>A statement that ethical approval was obtained (include your local ethics reference number)</li>
+<li>A statement that participants provided informed consent for data sharing via Databrary</li>
+</ul>
+<p><strong>Example wording:</strong></p>
+<blockquote>
+<p>Data were drawn from the ExELang Cross-Linguistic Corpus (Version 2.1; ExELang Consortium, 2024), specifically the French-speaking subsample collected in Wave 2 (N = 48, age range: 18–24 months). All procedures were approved by [Institution] Ethics Board (Ref: XXXX). Participants' guardians provided written informed consent, including consent to share data on Databrary.</p>
+</blockquote>
+<h2 id="acknowledgements-section">Acknowledgements Section</h2>
+<p>Include the following acknowledgement (edit as appropriate):</p>
+<blockquote>
+<p>This work was supported by the ExELang project. The authors thank all participating families and the ExELang data collection teams across sites. [Add any specific funding acknowledgements relevant to your paper — check the project website for the current funder list.]</p>
+</blockquote>
+<h2 id="after-acceptance">After Acceptance</h2>
+<ol>
+<li><strong>Share the accepted manuscript</strong> — Send a PDF to the project coordinator for the publications registry.</li>
+<li><strong>Update the Databrary record</strong> — If your paper introduces new coding or derived variables, discuss with the PI whether these should be added back to the Databrary volume.</li>
+<li><strong>Post a preprint</strong> — The project encourages preprints on PsyArXiv. If you post one, add the ExELang tag.</li>
+</ol>
+</section>
+
+      <section id="add-tools" class="docs-page-container">
+  <h1 id="how-to-add-new-developed-tools-on-the-server">How to Add New Developed Tools on the Server</h1>
+<p>This guide covers how to deploy a new script, tool, or pipeline to the shared ExELang server so that other team members can access and use it.</p>
+<h2 id="before-you-start">Before You Start</h2>
+<ul>
+<li>Confirm your tool is ready for shared use: it should be documented, tested on your local machine, and not contain any hardcoded local paths or credentials.</li>
+<li>Ensure you have SSH access to the server (see <a href="#how-to-onboard-a-new-student">How to Onboard a New Student</a> if you need to set this up).</li>
+<li>For major new tools or pipelines, discuss with the PI or technical lead before deploying, to agree on the right location and naming conventions.</li>
+</ul>
+<h2 id="repository-structure">Repository Structure</h2>
+<p>All tools live under <code>/shared/tools/</code> on the server, organised by type:</p>
+<pre><code>/shared/tools/
+├── analysis/       ← R and Python analysis scripts
+├── processing/     ← Audio/video preprocessing pipelines
+├── scoring/        ← Automated scoring tools
+└── utilities/      ← Misc helper scripts
+</code></pre>
+<p>Place your tool in the most appropriate subfolder. If none fits, raise it with the technical lead.</p>
+<h2 id="step-by-step-deployment">Step-by-Step Deployment</h2>
+<h3 id="1-prepare-your-repository">1. Prepare your repository</h3>
+<p>Your tool should have at minimum:
+- A <code>README.md</code> explaining what the tool does, its inputs/outputs, dependencies, and a usage example
+- A <code>requirements.txt</code> (Python) or <code>renv.lock</code> / <code>DESCRIPTION</code> (R) listing dependencies
+- No hardcoded absolute paths — use relative paths or a config file</p>
+<h3 id="2-push-to-the-shared-git-repository">2. Push to the shared Git repository</h3>
+<p>The server tools are version-controlled on the project's internal GitLab instance.</p>
+<pre><code class="language-bash"># Clone the tools repo (first time only)
+git clone git@gitlab.exelang.org:tools.git
+
+# Create a branch for your tool
+git checkout -b add/my-tool-name
+
+# Copy your tool into the correct subfolder
+# Commit and push
+git add .
+git commit -m &quot;Add [tool name]: brief description&quot;
+git push origin add/my-tool-name
+</code></pre>
+<p>Then open a Merge Request on GitLab and assign it to the technical lead for review.</p>
+<h3 id="3-after-merge-install-dependencies-on-the-server">3. After merge — install dependencies on the server</h3>
+<p>Once your MR is merged, SSH into the server and run the setup:</p>
+<pre><code class="language-bash">ssh exelang-server
+cd /shared/tools/&lt;subfolder&gt;/&lt;your-tool&gt;
+
+# For Python tools:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# For R tools:
+Rscript -e &quot;renv::restore()&quot;
+</code></pre>
+<h3 id="4-test-on-the-server">4. Test on the server</h3>
+<p>Run a quick sanity check using a small test file before announcing the tool to the team. Use paths under <code>/shared/test-data/</code> for this purpose — do not use real participant data for deployment testing.</p>
+<h3 id="5-announce-to-the-team">5. Announce to the team</h3>
+<p>Send a short email to the team list describing:
+- What the tool does
+- Where it lives (<code>/shared/tools/...</code>)
+- How to run it (or link to the README)
+- Any known limitations or works-in-progress</p>
+<blockquote>
+<p><strong>Note:</strong> If your tool processes participant data, it must comply with the data handling rules outlined in the Collaborator Responsibilities policy. Do not write output files containing participant IDs to any location outside <code>/shared/outputs/</code>.</p>
+</blockquote>
+</section>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="text-container">
+    <p>ExELang Project — Custodian Handbook</p>
+  </div>
+</footer>
+
+<script>
+// ── Sidebar active state on scroll ────────────────────────────────────────
+
+const sectionIds = ["landing", "administer-elsi", "onboard-student", "cite-data", "add-tools"];
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateActiveSidebar() {
+  const scrollY = window.scrollY + 100;
+  let current = sectionIds[0];
+  for (const id of sectionIds) {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) current = id;
+  }
+  document.querySelectorAll('#sidebar-nav button').forEach((btn, i) => {
+    const isActive = sectionIds[i] === current;
+    btn.className = isActive ? 'active-sidebar-btn' : 'inactive-sidebar-btn';
+  });
+}
+
+window.addEventListener('scroll', updateActiveSidebar, { passive: true });
+updateActiveSidebar();
+</script>
+
+</body>
+</html>
