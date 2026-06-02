@@ -34,7 +34,8 @@ SECTION_LABELS = {
     "01_administer_elsi":  "Administer ELSI",
     "02_onboard_student":  "Onboard a New Student",
     "03_cite_data":        "Cite ExELang Data",
-    "04_add_tools":        "Add Tools to Server",
+    "04_add_tools":        "Add Models to ELSI",
+    "05_use_ExELang_data":        "Work with the data",
 }
 
 # ── Helpers ──────────────────────────────────────────────────────────────────

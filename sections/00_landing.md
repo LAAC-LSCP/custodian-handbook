@@ -10,9 +10,9 @@ All collaborators must be aware of the project's official policies and agreement
 
 The project data is shared through three archives: [HomeBank](https://homebank.talkbank.org), [Databrary](https://databrary.org), and [The Language Archive](https://archive.mpi.nl). As a custodian, you have been granted access to this data through one of those platforms. You must comply with the conditions listed in the relevant platform agreement:
 
-- [HomeBank User Agreement](https://homebank.talkbank.org/about/goals.html)
-- [Databrary Access Agreement](https://databrary.org/about/agreement.html)
-- [The Language Archive Terms of Use](https://archive.mpi.nl/tla/ims/terms-of-use)
+- [HomeBank User Agreement](https://talkbank.org/0share/irb/index.html)
+- [Databrary Access Agreement](https://databrary.org/about/policies/terms)
+- [The Language Archive Terms of Use](https://archive.mpi.nl/tla/terms-of-use)
 
 ### Data Storage & Security
 

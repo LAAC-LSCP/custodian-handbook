@@ -1,83 +1,63 @@
-# How to Add New Developed Tools on the Server
+# Adding a New Model to the Platform
 
-This guide covers how to deploy a new script, tool, or pipeline to the shared ExELang server so that other team members can access and use it.
+This section covers the full process of integrating a new analysis model into ELSI, from implementation to deployment. The process involves two actors: the **model developer** who prepares and submits the model, and the **platform maintainers** who deploy it.
 
-## Before You Start
+---
 
-- Confirm your tool is ready for shared use: it should be documented, tested on your local machine, and not contain any hardcoded local paths or credentials.
-- Ensure you have SSH access to the server (see [How to Onboard a New Student](#how-to-onboard-a-new-student) if you need to set this up).
-- For major new tools or pipelines, discuss with the PI or technical lead before deploying, to agree on the right location and naming conventions.
+## Model Developer: Implementation
 
-## Repository Structure
+### Dockerizing the Model
 
-All tools live under `/shared/tools/` on the server, organised by type:
+All models must be packaged as Docker images to run on the platform. The implementation must follow the requirements defined in the [analysis-service-core repository](https://github.com/laac-lscp/analysis-service-core), which specifies the interface your model must expose. This includes:
 
-```
-/shared/tools/
-├── analysis/       ← R and Python analysis scripts
-├── processing/     ← Audio/video preprocessing pipelines
-├── scoring/        ← Automated scoring tools
-└── utilities/      ← Misc helper scripts
-```
+- **GPU support** — implement if the model can benefit from it
+- **Failure reporting** — the model must report errors in the expected format so the platform can surface them to users
+- **Effort model** — an estimate of the compute cost relative to input duration, used to calculate credit consumption
+- **Progress reporting** — the model must report progress so users can track long-running jobs
 
-Place your tool in the most appropriate subfolder. If none fits, raise it with the technical lead.
+Read the repository documentation carefully before starting — the interface requirements are strict and must be met for the model to be accepted onto the platform.
 
-## Step-by-Step Deployment
+### Annotation Output Format
 
-### 1. Prepare your repository
+Check whether your model's output format is already supported by ChildProject by consulting the [list of supported converters](https://github.com/LAAC-LSCP/ChildProject/blob/59783349d42e0f5e4e9e1db3ff8d06362404e6ed/ChildProject/converters.py#L9).
 
-Your tool should have at minimum:
-- A `README.md` explaining what the tool does, its inputs/outputs, dependencies, and a usage example
-- A `requirements.txt` (Python) or `renv.lock` / `DESCRIPTION` (R) listing dependencies
-- No hardcoded absolute paths — use relative paths or a config file
+If your format is **not** on that list, you must add a conversion step inside your Docker image that transforms the model output into the standard ChildProject annotation CSV format. The required fields are documented in the [ChildProject annotation format reference](https://childproject.readthedocs.io/en/latest/format.html#annotations-format).
 
-### 2. Push to the shared Git repository
+### Submitting to the Platform
 
-The server tools are version-controlled on the project's internal GitLab instance.
+Once your Docker image is built and tested, submit it to the platform maintainers. Provide:
 
-```bash
-# Clone the tools repo (first time only)
-git clone git@gitlab.exelang.org:tools.git
+- The Docker image or instructions to build/pull it
+- The name to use for the service in the Swarm compose file
+- A short description of the model and its expected output format
 
-# Create a branch for your tool
-git checkout -b add/my-tool-name
+---
 
-# Copy your tool into the correct subfolder
-# Commit and push
-git add .
-git commit -m "Add [tool name]: brief description"
-git push origin add/my-tool-name
-```
+## Administrator: Registering the Model
 
-Then open a Merge Request on GitLab and assign it to the technical lead for review.
+Once the maintainers have deployed the image (see below), the model must be registered in the platform so it appears as an available option for users.
 
-### 3. After merge — install dependencies on the server
+In the **Administrator Panel**, go to **Analytics → Analytics Types** and add a new entry with the following fields:
 
-Once your MR is merged, SSH into the server and run the setup:
+- **`label`** — the display name shown to users in the interface
+- **`model_name`** — the name given to the service in the Docker Swarm compose file (provided by the maintainers)
+- **`import_key`** — the annotation format of the model's output. Use `csv` if the output has been converted to the standard ChildProject CSV format.
 
-```bash
-ssh exelang-server
-cd /shared/tools/<subfolder>/<your-tool>
+When setting the **credit cost per hour** of audio, consider:
 
-# For Python tools:
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+- How computationally heavy the model is to run
+- How long it takes relative to audio duration
+- Whether you want to encourage adoption of a newer model — a slightly lower price for a newer model with equivalent computational cost is a reasonable incentive, even if it means a short-term cost reduction
 
-# For R tools:
-Rscript -e "renv::restore()"
-```
+---
 
-### 4. Test on the server
+## Platform Maintainers: Deployment
 
-Run a quick sanity check using a small test file before announcing the tool to the team. Use paths under `/shared/test-data/` for this purpose — do not use real participant data for deployment testing.
+Once a model submission is received, using the clone repo of [https://github.com/laac-lscp/analysis-service](https://github.com/laac-lscp/analysis-service):
 
-### 5. Announce to the team
+1. **Build or pull the Docker image** on the server hosting the platform
+2. **Add the service to the Swarm compose file**, giving it the agreed `model_name` as the service name
+3. **Start the service** alongside the analysis service so it is reachable by the platform
+4. Confirm to the model developer and administrators that the service is live, so the Analytics Type entry can be created
 
-Send a short email to the team list describing:
-- What the tool does
-- Where it lives (`/shared/tools/...`)
-- How to run it (or link to the README)
-- Any known limitations or works-in-progress
-
-> **Note:** If your tool processes participant data, it must comply with the data handling rules outlined in the Collaborator Responsibilities policy. Do not write output files containing participant IDs to any location outside `/shared/outputs/`.
+> **Note:** The `model_name` set in the compose file must exactly match what is entered in the `model_name` field of the Analytics Type record. A mismatch will cause model runs to fail silently.

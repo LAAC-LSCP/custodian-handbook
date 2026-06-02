@@ -259,7 +259,8 @@ main {
         <button class="inactive-sidebar-btn" onclick="scrollToSection('administer-elsi')">Administer ELSI</button>
         <button class="inactive-sidebar-btn" onclick="scrollToSection('onboard-student')">Onboard a New Student</button>
         <button class="inactive-sidebar-btn" onclick="scrollToSection('cite-data')">Cite ExELang Data</button>
-        <button class="inactive-sidebar-btn" onclick="scrollToSection('add-tools')">Add Tools to Server</button>
+        <button class="inactive-sidebar-btn" onclick="scrollToSection('add-tools')">Add Models to ELSI</button>
+        <button class="inactive-sidebar-btn" onclick="scrollToSection('use-ExELang-data')">Work with the data</button>
       </nav>
     </aside>
 
@@ -269,55 +270,78 @@ main {
 <p>Welcome to the Custodian Handbook. This document is intended for custodian collaborators of the ExELang project. It is meant to help researchers, research assistants, engineers and students, as well as help with onboarding new team members. It contains resources about rights and responsibilities as a custodian and data user, and provides step-by-step instructions for the most common tasks in our workflow.</p>
 <h2 id="rights-responsibilities">Rights &amp; Responsibilities</h2>
 <p>All collaborators must be aware of the project's official policies and agreements on data access, ethics, and authorship.</p>
-<ul>
-<li><a href="https://elsi-lscp.ddns.net/docs">Participant Rights &amp; Data Ethics Policy</a> — covers informed consent, participant confidentiality, and GDPR/local compliance obligations.</li>
-</ul>
-<blockquote>
-<p><strong>Note:</strong> If you are a new collaborator and have not yet signed the Data Sharing Agreement, please contact the project coordinator before proceeding with any of the steps below.</p>
-</blockquote>
 <h3 id="data-access">Data Access</h3>
 <p>The project data is shared through three archives: <a href="https://homebank.talkbank.org">HomeBank</a>, <a href="https://databrary.org">Databrary</a>, and <a href="https://archive.mpi.nl">The Language Archive</a>. As a custodian, you have been granted access to this data through one of those platforms. You must comply with the conditions listed in the relevant platform agreement:</p>
 <ul>
-<li><a href="https://homebank.talkbank.org/about/goals.html">HomeBank User Agreement</a></li>
-<li><a href="https://databrary.org/about/agreement.html">Databrary Access Agreement</a></li>
-<li><a href="https://archive.mpi.nl/tla/ims/terms-of-use">The Language Archive Terms of Use</a></li>
+<li><a href="https://talkbank.org/0share/irb/index.html">HomeBank User Agreement</a></li>
+<li><a href="https://databrary.org/about/policies/terms">Databrary Access Agreement</a></li>
+<li><a href="https://archive.mpi.nl/tla/terms-of-use">The Language Archive Terms of Use</a></li>
 </ul>
 <h3 id="data-storage-security">Data Storage &amp; Security</h3>
-<p>Data storage is the responsibility of the custodians. You must ensure the security and integrity of the data you hold, and coordinate with other custodians to maintain consistent standards across sites. This includes secure storage, access controls, and regular backups.</p>
+<p>Data storage is the responsibility of the custodians. You must ensure the security and integrity of the data you hold, and coordinate with other custodians to maintain consistent standards across sites.</p>
 <h3 id="data-usage">Data Usage</h3>
 <p>Usage of the data is restricted to the training and evaluation of machine learning models. The data cannot be shared with or released to other collaborators unless they formally join the custodian group and agree to the same terms.</p>
 <h3 id="models-open-science">Models &amp; Open Science</h3>
 <p>Models created using this data must be made open source and shared in accordance with open science principles. This includes sharing model weights, training configurations, and evaluation results through appropriate public repositories.</p>
 <h3 id="authorship-attribution">Authorship &amp; Attribution</h3>
-<p>Data contributors who initially collected and shared the data will be made co-authors of any papers produced using this data, or credited in accordance with their choice as stated in their original data sharing agreement. This must be verified before submitting any manuscript.</p>
+<p>Data contributors who initially collected and shared the data will be credited or made co-authors of produced publications in accordance with their choice as stated in their original data sharing agreement.</p>
 </section>
 
       <section id="administer-elsi" class="docs-page-container">
-  <h1 id="how-to-administer-elsi">How to Administer ELSI</h1>
-<p>The ELSI (Early Language and Social Interaction) protocol is the core data collection instrument used across ExELang sites. Follow these steps carefully to ensure consistency across the project.</p>
-<h2 id="before-the-session">Before the Session</h2>
+  <h1 id="administering-elsi">Administering ELSI</h1>
+<p>This section covers the responsibilities and procedures for administrators of the ELSI platform. Administrator access grants global control over the platform — use it carefully.</p>
+<hr />
+<h2 id="administrator-duties">Administrator Duties</h2>
+<h3 id="approving-and-refusing-new-accounts">Approving and Refusing New Accounts</h3>
+<p>When a user signs up, their account is pending until an administrator reviews it. To process sign-up requests:</p>
 <ol>
-<li><strong>Schedule the appointment</strong> — Book the session in the shared calendar at least 48 hours in advance. Include the participant ID (not their name) in the event title.</li>
-<li><strong>Prepare the materials</strong> — Print the ELSI stimulus booklet from the shared drive (<code>/Materials/ELSI/Stimuli_vX.X.pdf</code>). Confirm you have the correct version for the current data collection wave.</li>
-<li><strong>Check equipment</strong> — Test audio recording equipment at least 30 minutes before the session. Ensure battery levels are adequate and that storage media is blank.</li>
-<li><strong>Confirm consent</strong> — Verify that the participant's guardian has signed the informed consent form and that it is filed in the appropriate folder.</li>
+<li>Log in and open the <strong>Administrator Panel</strong></li>
+<li>Navigate to <strong>Accounts</strong> in the top right section</li>
+<li>Review each pending request — check the user's affiliation and purpose if provided</li>
+<li>Approve or refuse accordingly</li>
 </ol>
-<h2 id="during-the-session">During the Session</h2>
+<p>Refused requests should be accompanied by a reason where possible, so the user can reapply or contact the team if there was a misunderstanding.</p>
+<h3 id="approving-and-refusing-dataset-creation-requests">Approving and Refusing Dataset Creation Requests</h3>
+<p>Users can request the creation of a new dataset, which must be reviewed before being provisioned on the server.</p>
 <ol>
-<li><strong>Introduction script</strong> — Read the standardised introduction verbatim (see <code>ELSI_Admin_Protocol.pdf</code>, p. 3). Do not deviate from the script.</li>
-<li><strong>Recording</strong> — Start the audio recorder before entering the room with the participant. Label the recording with the format: <code>SITECODE_PARTICIPANTID_YYYYMMDD</code>.</li>
-<li><strong>Scoring live</strong> — Use the paper scoring sheet during administration. Circle responses clearly. Do not make corrections with correction fluid — cross out and initial any errors.</li>
-<li><strong>Timing</strong> — Adhere strictly to item timing guidelines. Use a silent timer on your phone if needed.</li>
+<li>In the <strong>Administrator Panel</strong>, go to <strong>Datasets</strong> in the top right section</li>
+<li>Review pending dataset creation requests</li>
+<li>Check <strong>Naming</strong>: dataset names should avoid blank spaces and special characters as much as possible. If a submitted name contains spaces, ask the requester to revise it or correct it before approving.</li>
+<li>Check <strong>Size</strong>: be cautious with the maximum size declared — datasets must not risk saturating the server. If in doubt, start with a conservative allocation and adjust later.</li>
+<li>Approve or refuse the request.</li>
 </ol>
-<h2 id="after-the-session">After the Session</h2>
+<h3 id="managing-credits">Managing Credits</h3>
+<p>Credits are the currency used to run models on the platform. They are consumed based on the duration of the audio processed and a cost per hour of audio.</p>
+<p>Credits can be allocated to accounts in two situations:
+- <strong>In exchange for financial participation</strong> to server maintenance costs
+- <strong>For free</strong>, in the case of collaborators contributing to the project</p>
+<p>To assign credits:</p>
 <ol>
-<li><strong>Transfer recordings</strong> — Upload audio files to the secure server within 24 hours using the procedure in <a href="#how-to-add-new-tools-on-server">How to Add New Data to the Server</a>.</li>
-<li><strong>Enter scores</strong> — Enter paper scores into the REDCap database on the same day. Double-check entries before saving.</li>
-<li><strong>File paperwork</strong> — Scan consent forms and upload to the secure shared drive. Physical copies go in the locked cabinet.</li>
-<li><strong>Flag any anomalies</strong> — If anything unusual occurred during the session (interruption, participant distress, equipment failure), complete an Incident Note and email it to the PI.</li>
+<li>In the <strong>Administrator Panel</strong>, go to <strong>Accounts</strong></li>
+<li>Select the relevant account</li>
+<li>Enter the number of credits to assign and confirm</li>
 </ol>
+<p>Keep a note of credit allocations and their rationale for accounting and transparency purposes.</p>
+<h3 id="user-roles">User Roles</h3>
+<p>There are currently three roles on the platform. The first two are dataset-level roles, the third is a global role:</p>
+<ul>
+<li><strong>Analyst</strong> — associated with a specific dataset. Can request model runs and access the resulting annotations, but cannot access or download raw data.</li>
+<li><strong>Manager</strong> — associated with a specific dataset. Can manage the dataset's content, add or remove members, and download raw data.</li>
+<li><strong>Administrator</strong> — global role. Can manage all datasets, accounts, credits, and platform settings regardless of dataset-level assignments.</li>
+</ul>
+<p>Every dataset must have at least one Manager at all times. Managers can add other Managers and Analysts to their dataset directly. Administrators can intervene on any dataset regardless of whether they are assigned as Manager.</p>
+<p>Dataset membership is managed from within the dataset itself, in the right-hand panel.</p>
+<hr />
+<h2 id="managing-datasets">Managing Datasets</h2>
+<p>Administrators may need to intervene in dataset management when something goes wrong, a dataset is in an inconsistent state, or a user requests help.</p>
+<h3 id="childproject-principles">ChildProject Principles</h3>
+<p>All datasets on ELSI follow the structure and conventions defined by <strong>ChildProject</strong>. Before intervening in a dataset's filesystem, familiarise yourself with its documentation and expected folder layout. Any manual intervention must leave the dataset in a valid ChildProject-compliant state.</p>
+<p>→ Refer to the <a href="https://childproject.readthedocs.io">ChildProject documentation</a> for details on dataset structure, metadata requirements, and validation tools.</p>
+<h3 id="keeping-the-filesystem-and-database-in-sync">Keeping the Filesystem and Database in Sync</h3>
+<p>The platform maintains a database that tracks dataset contents and metadata. The filesystem (where the actual data files live) and this database must always be consistent with one another. Discrepancies can cause model runs to fail or data to appear missing.</p>
+<p>If you intervene directly on the filesystem (e.g. moving, renaming, or deleting files), make sure the corresponding database records are updated. If you are unsure whether a change will cause a sync issue, consult the technical lead before proceeding.</p>
 <blockquote>
-<p><strong>Note:</strong> If this is your first time administering the ELSI, you must complete a reliability training session with a certified administrator and reach 85% agreement before collecting independent data.</p>
+<p><strong>Note:</strong> Never modify dataset files directly on the server without first checking whether the change needs to be reflected in the database. When in doubt, ask.</p>
 </blockquote>
 </section>
 
@@ -405,68 +429,116 @@ main {
 </section>
 
       <section id="add-tools" class="docs-page-container">
-  <h1 id="how-to-add-new-developed-tools-on-the-server">How to Add New Developed Tools on the Server</h1>
-<p>This guide covers how to deploy a new script, tool, or pipeline to the shared ExELang server so that other team members can access and use it.</p>
-<h2 id="before-you-start">Before You Start</h2>
+  <h1 id="adding-a-new-model-to-the-platform">Adding a New Model to the Platform</h1>
+<p>This section covers the full process of integrating a new analysis model into ELSI, from implementation to deployment. The process involves two actors: the <strong>model developer</strong> who prepares and submits the model, and the <strong>platform maintainers</strong> who deploy it.</p>
+<hr />
+<h2 id="model-developer-implementation">Model Developer: Implementation</h2>
+<h3 id="dockerizing-the-model">Dockerizing the Model</h3>
+<p>All models must be packaged as Docker images to run on the platform. The implementation must follow the requirements defined in the <a href="https://github.com/laac-lscp/analysis-service-core">analysis-service-core repository</a>, which specifies the interface your model must expose. This includes:</p>
 <ul>
-<li>Confirm your tool is ready for shared use: it should be documented, tested on your local machine, and not contain any hardcoded local paths or credentials.</li>
-<li>Ensure you have SSH access to the server (see <a href="#how-to-onboard-a-new-student">How to Onboard a New Student</a> if you need to set this up).</li>
-<li>For major new tools or pipelines, discuss with the PI or technical lead before deploying, to agree on the right location and naming conventions.</li>
+<li><strong>GPU support</strong> — implement if the model can benefit from it</li>
+<li><strong>Failure reporting</strong> — the model must report errors in the expected format so the platform can surface them to users</li>
+<li><strong>Effort model</strong> — an estimate of the compute cost relative to input duration, used to calculate credit consumption</li>
+<li><strong>Progress reporting</strong> — the model must report progress so users can track long-running jobs</li>
 </ul>
-<h2 id="repository-structure">Repository Structure</h2>
-<p>All tools live under <code>/shared/tools/</code> on the server, organised by type:</p>
-<pre><code>/shared/tools/
-├── analysis/       ← R and Python analysis scripts
-├── processing/     ← Audio/video preprocessing pipelines
-├── scoring/        ← Automated scoring tools
-└── utilities/      ← Misc helper scripts
-</code></pre>
-<p>Place your tool in the most appropriate subfolder. If none fits, raise it with the technical lead.</p>
-<h2 id="step-by-step-deployment">Step-by-Step Deployment</h2>
-<h3 id="1-prepare-your-repository">1. Prepare your repository</h3>
-<p>Your tool should have at minimum:
-- A <code>README.md</code> explaining what the tool does, its inputs/outputs, dependencies, and a usage example
-- A <code>requirements.txt</code> (Python) or <code>renv.lock</code> / <code>DESCRIPTION</code> (R) listing dependencies
-- No hardcoded absolute paths — use relative paths or a config file</p>
-<h3 id="2-push-to-the-shared-git-repository">2. Push to the shared Git repository</h3>
-<p>The server tools are version-controlled on the project's internal GitLab instance.</p>
-<pre><code class="language-bash"># Clone the tools repo (first time only)
-git clone git@gitlab.exelang.org:tools.git
-
-# Create a branch for your tool
-git checkout -b add/my-tool-name
-
-# Copy your tool into the correct subfolder
-# Commit and push
-git add .
-git commit -m &quot;Add [tool name]: brief description&quot;
-git push origin add/my-tool-name
-</code></pre>
-<p>Then open a Merge Request on GitLab and assign it to the technical lead for review.</p>
-<h3 id="3-after-merge-install-dependencies-on-the-server">3. After merge — install dependencies on the server</h3>
-<p>Once your MR is merged, SSH into the server and run the setup:</p>
-<pre><code class="language-bash">ssh exelang-server
-cd /shared/tools/&lt;subfolder&gt;/&lt;your-tool&gt;
-
-# For Python tools:
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-# For R tools:
-Rscript -e &quot;renv::restore()&quot;
-</code></pre>
-<h3 id="4-test-on-the-server">4. Test on the server</h3>
-<p>Run a quick sanity check using a small test file before announcing the tool to the team. Use paths under <code>/shared/test-data/</code> for this purpose — do not use real participant data for deployment testing.</p>
-<h3 id="5-announce-to-the-team">5. Announce to the team</h3>
-<p>Send a short email to the team list describing:
-- What the tool does
-- Where it lives (<code>/shared/tools/...</code>)
-- How to run it (or link to the README)
-- Any known limitations or works-in-progress</p>
+<p>Read the repository documentation carefully before starting — the interface requirements are strict and must be met for the model to be accepted onto the platform.</p>
+<h3 id="annotation-output-format">Annotation Output Format</h3>
+<p>Check whether your model's output format is already supported by ChildProject by consulting the <a href="https://github.com/LAAC-LSCP/ChildProject/blob/59783349d42e0f5e4e9e1db3ff8d06362404e6ed/ChildProject/converters.py#L9">list of supported converters</a>.</p>
+<p>If your format is <strong>not</strong> on that list, you must add a conversion step inside your Docker image that transforms the model output into the standard ChildProject annotation CSV format. The required fields are documented in the <a href="https://childproject.readthedocs.io/en/latest/format.html#annotations-format">ChildProject annotation format reference</a>.</p>
+<h3 id="submitting-to-the-platform">Submitting to the Platform</h3>
+<p>Once your Docker image is built and tested, submit it to the platform maintainers. Provide:</p>
+<ul>
+<li>The Docker image or instructions to build/pull it</li>
+<li>The name to use for the service in the Swarm compose file</li>
+<li>A short description of the model and its expected output format</li>
+</ul>
+<hr />
+<h2 id="administrator-registering-the-model">Administrator: Registering the Model</h2>
+<p>Once the maintainers have deployed the image (see below), the model must be registered in the platform so it appears as an available option for users.</p>
+<p>In the <strong>Administrator Panel</strong>, go to <strong>Analytics → Analytics Types</strong> and add a new entry with the following fields:</p>
+<ul>
+<li><strong><code>label</code></strong> — the display name shown to users in the interface</li>
+<li><strong><code>model_name</code></strong> — the name given to the service in the Docker Swarm compose file (provided by the maintainers)</li>
+<li><strong><code>import_key</code></strong> — the annotation format of the model's output. Use <code>csv</code> if the output has been converted to the standard ChildProject CSV format.</li>
+</ul>
+<p>When setting the <strong>credit cost per hour</strong> of audio, consider:</p>
+<ul>
+<li>How computationally heavy the model is to run</li>
+<li>How long it takes relative to audio duration</li>
+<li>Whether you want to encourage adoption of a newer model — a slightly lower price for a newer model with equivalent computational cost is a reasonable incentive, even if it means a short-term cost reduction</li>
+</ul>
+<hr />
+<h2 id="platform-maintainers-deployment">Platform Maintainers: Deployment</h2>
+<p>Once a model submission is received, using the clone repo of <a href="https://github.com/laac-lscp/analysis-service">https://github.com/laac-lscp/analysis-service</a>:</p>
+<ol>
+<li><strong>Build or pull the Docker image</strong> on the server hosting the platform</li>
+<li><strong>Add the service to the Swarm compose file</strong>, giving it the agreed <code>model_name</code> as the service name</li>
+<li><strong>Start the service</strong> alongside the analysis service so it is reachable by the platform</li>
+<li>Confirm to the model developer and administrators that the service is live, so the Analytics Type entry can be created</li>
+</ol>
 <blockquote>
-<p><strong>Note:</strong> If your tool processes participant data, it must comply with the data handling rules outlined in the Collaborator Responsibilities policy. Do not write output files containing participant IDs to any location outside <code>/shared/outputs/</code>.</p>
+<p><strong>Note:</strong> The <code>model_name</code> set in the compose file must exactly match what is entered in the <code>model_name</code> field of the Analytics Type record. A mismatch will cause model runs to fail silently.</p>
 </blockquote>
+</section>
+
+      <section id="use-ExELang-data" class="docs-page-container">
+  <h1 id="using-exelang-data">Using ExELang Data</h1>
+<p>This section explains how to access and navigate ExELang datasets, whether you are working with them locally or on the platform.</p>
+<hr />
+<h2 id="getting-the-data">Getting the Data</h2>
+<p>ExELang datasets are hosted on <a href="https://gin.g-node.org">GIN (G-Node Infrastructure)</a> and managed with <a href="https://www.datalad.org">DataLad</a>. DataLad lets you clone a dataset repository without immediately downloading all the large audio files — you get the structure and metadata first, and pull the actual data only when needed.</p>
+<h3 id="cloning-a-dataset">Cloning a Dataset</h3>
+<pre><code class="language-bash">datalad clone https://gin.g-node.org/LAAC-LSCP/&lt;dataset-name&gt;
+cd &lt;dataset-name&gt;
+</code></pre>
+<p>This gives you the full folder structure, metadata, and annotation files, but audio files will appear as broken symlinks until you download them.</p>
+<h3 id="downloading-audio-files">Downloading Audio Files</h3>
+<p><strong>Before October 2026</strong>, audio files are served directly from GIN. Use <code>datalad get</code> to download the files you need:</p>
+<pre><code class="language-bash"># Download a specific file
+datalad get recordings/raw/my_recording.wav
+
+# Download all raw recordings
+datalad get recordings/raw/
+</code></pre>
+<p><strong>After October 2026</strong>, files will no longer be available from GIN and must be retrieved from the archive linked to the specific dataset — either <a href="https://databrary.org">Databrary</a>, <a href="https://homebank.talkbank.org">HomeBank</a>, or <a href="https://archive.mpi.nl">The Language Archive</a>. Once downloaded from the relevant archive, place the files in the <code>recordings/</code> folder of the cloned repo:</p>
+<hr />
+<h2 id="dataset-structure">Dataset Structure</h2>
+<h3 id="recordings">Recordings</h3>
+<p>All audio files live under the <code>recordings/</code> folder:</p>
+<ul>
+<li><code>recordings/raw/</code> — original recordings as collected in the field, in their native format</li>
+<li><code>recordings/converted/standard/</code> — standardised versions of the recordings: mono channel, 16 kHz, WAV format. These are the files used as input for model runs on the platform.</li>
+</ul>
+<h3 id="annotations">Annotations</h3>
+<p>Annotations are stored under the <code>annotations/</code> folder, organised into <strong>sets</strong>. Each set corresponds to a particular annotation campaign, tool, or model output, and follows a consistent structure:</p>
+<pre><code>annotations/
+└── &lt;set-name&gt;/
+    ├── converted/   ← standard CSV annotations (always present)
+    └── raw/         ← original annotation files in their native format (when relevant)
+</code></pre>
+<p>The <code>converted/</code> folder is the canonical source for working with annotations programmatically. Files in <code>raw/</code> are kept for reference and reproducibility but should not be used directly for analysis.</p>
+<h3 id="metadata">Metadata</h3>
+<p>The <code>metadata/</code> folder contains three index files that together describe the full dataset:</p>
+<ul>
+<li><strong><code>recordings.csv</code></strong> — the index of all recordings in the dataset, with their paths and associated metadata</li>
+<li><strong><code>children.csv</code></strong> — participant-level metadata</li>
+<li><strong><code>annotations.csv</code></strong> — the index linking recordings to their annotations. For each annotation file, it specifies which recording it annotates, which annotation set it belongs to, what label set is used, and the time window covered. This is the key file for tracing what annotates what.</li>
+</ul>
+<hr />
+<h2 id="working-with-the-data-in-python">Working with the Data in Python</h2>
+<p><a href="https://childproject.readthedocs.io">ChildProject</a> is the recommended library for working with ExELang datasets programmatically. It provides tools for loading and filtering annotations, validating dataset structure, computing statistics, and more.</p>
+<pre><code class="language-python">from ChildProject.projects import ChildProject
+from ChildProject.annotations import AnnotationManager
+
+project = ChildProject('path/to/dataset')
+am = AnnotationManager(project)
+
+am.read()
+
+# Load annotations from a specific set
+annotations = am.get_segments(sets=['my-set'])
+</code></pre>
+<p>Refer to the <a href="https://childproject.readthedocs.io">ChildProject documentation</a> for the full API reference and usage examples.</p>
 </section>
     </div>
 
@@ -482,7 +554,7 @@ Rscript -e &quot;renv::restore()&quot;
 <script>
 // ── Sidebar active state on scroll ────────────────────────────────────────
 
-const sectionIds = ["landing", "administer-elsi", "onboard-student", "cite-data", "add-tools"];
+const sectionIds = ["landing", "administer-elsi", "onboard-student", "cite-data", "add-tools", "use-ExELang-data"];
 
 function scrollToSection(id) {
   const el = document.getElementById(id);
