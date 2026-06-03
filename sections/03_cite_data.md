@@ -1,4 +1,4 @@
-# How to Cite ExELang Data in a New Paper
+# Citation practices
 
 Any publication, thesis, conference presentation, or preprint that uses ExELang data must follow these citation and disclosure guidelines. This protects participants, acknowledges contributors fairly, and maintains the project's data governance commitments.
 

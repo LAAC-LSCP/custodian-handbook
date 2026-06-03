@@ -30,10 +30,10 @@ FOOTER_TEXT   = "ExELang Project — Custodian Handbook"
 # Sidebar labels: map filename stem → display name.
 # Add or rename entries here when you add new sections.
 SECTION_LABELS = {
-    "00_landing":          "Introduction & Rights",
+    "00_landing":          "Introduction",
     "01_administer_elsi":  "Administer ELSI",
     "02_onboard_student":  "Onboard a New Student",
-    "03_cite_data":        "Cite ExELang Data",
+    "03_cite_data":        "Citation practices",
     "04_add_tools":        "Add Models to ELSI",
     "05_use_ExELang_data":        "Work with the data",
 }
