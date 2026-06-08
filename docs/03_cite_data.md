@@ -13,7 +13,7 @@ Any publication, thesis, conference presentation, or preprint that uses ExELang 
 Use the following citation format for the ExELang dataset itself (in addition to any papers you cite):
 
 **APA format:**
-> ExELang Consortium. (Year). *ExELang Cross-Linguistic Corpus* [Data set, Version X.X]. Databrary. https://doi.org/XXXXX
+> ExELang Consortium. (Year). *ExELang Cross-Linguistic Corpus* \[Data set, Version X.X\]. Databrary. https://doi.org/XXXXX
 
 The current DOI and version number are always available on the [Databrary volume page](https://databrary.org/exelang).
 
@@ -31,13 +31,13 @@ Include the following elements:
 - A statement that participants provided informed consent for data sharing via Databrary
 
 **Example wording:**
-> Data were drawn from the ExELang Cross-Linguistic Corpus (Version 2.1; ExELang Consortium, 2024), specifically the French-speaking subsample collected in Wave 2 (N = 48, age range: 18–24 months). All procedures were approved by [Institution] Ethics Board (Ref: XXXX). Participants' guardians provided written informed consent, including consent to share data on Databrary.
+> Data were drawn from the ExELang Cross-Linguistic Corpus (Version 2.1; ExELang Consortium, 2024), specifically the French-speaking subsample collected in Wave 2 (N = 48, age range: 18–24 months). All procedures were approved by \[Institution\] Ethics Board (Ref: XXXX). Participants' guardians provided written informed consent, including consent to share data on Databrary.
 
 ## Acknowledgements Section
 
 Include the following acknowledgement (edit as appropriate):
 
-> This work was supported by the ExELang project. The authors thank all participating families and the ExELang data collection teams across sites. [Add any specific funding acknowledgements relevant to your paper — check the project website for the current funder list.]
+> This work was supported by the ExELang project. The authors thank all participating families and the ExELang data collection teams across sites. \[Add any specific funding acknowledgements relevant to your paper — check the project website for the current funder list.\]
 
 ## After Acceptance
 
