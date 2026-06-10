@@ -6,7 +6,14 @@ Welcome to the Custodian Handbook. This document is intended for custodian colla
 
 All collaborators must be aware of the project's official policies and agreements on data access, ethics, and authorship.
 
-### Data Access
+### Vocab
+
+A number of specific terms are used in this handbook, here is a list of common terms you will encounter and what they designate:
+
+- **referent PI** - If you are reading this handbook, you probably are a student or collaborator of one of the custodian researchers of the project, namely **Okko Räsänen**, **Sho Tusji** or **Marvin Lavechin**. Your referent PI is your supervisor.
+
+
+### Data archives
 
 The project data is shared through three archives: [HomeBank](https://homebank.talkbank.org), [Databrary](https://databrary.org), and [The Language Archive](https://archive.mpi.nl). As a custodian, you have been granted access to this data through one of those platforms. You must comply with the conditions listed in the relevant platform agreement:
 
