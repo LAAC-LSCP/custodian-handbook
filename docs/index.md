@@ -1,25 +1,21 @@
 ---
 title: Landing page od the custodian handbook
 description: Introduction and general rules of the custodian handbook
-icon: lucide/flask-conical
+icon: "fontawesome/solid/book"
 ---
 
 # Custodian Handbook
 
 Welcome to the Custodian Handbook. This document is intended for custodian collaborators of the ExELang project. It is meant to help researchers, research assistants, engineers and students, as well as help with onboarding new team members. It contains resources about rights and responsibilities as a custodian and data user, and provides step-by-step instructions for the most common tasks in our workflow.
 
-## Intro
-
-All collaborators must be aware of the project's official policies and agreements on data access, ethics, and authorship.
-
-### Vocab
+## Vocab
 
 A number of specific terms are used in this handbook, here is a list of common terms you will encounter and what they designate:
 
 - **referent PI** - If you are reading this handbook, you probably are a student or collaborator of one of the custodian researchers of the project, namely **Okko Räsänen**, **Sho Tusji** or **Marvin Lavechin**. Your referent PI is your supervisor.
 
 
-### Data archives
+## Data archives
 
 The project data is shared through three archives: [HomeBank](https://homebank.talkbank.org), [Databrary](https://databrary.org), and [The Language Archive](https://archive.mpi.nl). As a custodian, you have been granted access to this data through one of those platforms. You must comply with the conditions listed in the relevant platform agreement:
 
@@ -27,18 +23,25 @@ The project data is shared through three archives: [HomeBank](https://homebank.t
 - [Databrary Access Agreement](https://databrary.org/about/policies/terms)
 - [The Language Archive Terms of Use](https://archive.mpi.nl/tla/terms-of-use)
 
-### Data Storage & Security
+## Onboarding new students / collaborators
 
-Data storage is the responsibility of the custodians. You must ensure the security and integrity of the data you hold, and coordinate with other custodians to maintain consistent standards across sites.
+As a custodian, students and collaborators will need access to the data to work on it. The necessary steps are listed [here](02_onboard_student.md).
 
-### Data Usage
+## Citation practices
 
-Usage of the data is restricted to the training and evaluation of machine learning models. The data cannot be shared with or released to other collaborators unless they formally join the custodian group and agree to the same terms.
+The publications that result from working with this data must comply with the set of rules [here](03_cite_data.md)
 
-### Models & Open Science
+## New models developed
 
-Models created using this data must be made open source and shared in accordance with open science principles. This includes sharing model weights, training configurations, and evaluation results through appropriate public repositories.
+One of the reason of the creation of this system of data sharing is to facilitate the developement of tools that can analyze data by themselves. We ask that custodians share their models openly and put the necessary work to integrate them in user distributed platforms, and in aprticular in [ELSI](elsi-lscp.ddns.net/docs) to give back to data contributors valuable analysis.
 
-### Authorship & Attribution
+In order to integrate those into ELSI, you have to follow those [guidelines](04_add_tools.md).
 
-Data contributors who initially collected and shared the data will be credited or made co-authors of produced publications in accordance with their choice as stated in their original data sharing agreement.
+## Using the data
+
+The data shared in this system is stored in a structured way. The details of how it organized and the tools that can help utilize it are described [here](05_use_ExELang_data.md)
+
+## Synchronization of custodians
+
+The custodians may modify and add information to the datasets. As they are a group of 3, they should maintain synchronization of the data between their respective labs by following those [guidelines](06_custodian_sync.md).
+
