@@ -2,45 +2,64 @@
 
 Any publication, thesis, conference presentation, or preprint that uses ExELang data must follow these citation and disclosure guidelines. This protects participants, acknowledges contributors fairly, and maintains the project's data governance commitments.
 
-## Before You Submit
+## Always cite the archives
 
-1. **Notify the PI** — Email the PI with a brief description of the paper (title, venue, authors, and which data subset you used) at least 4 weeks before submission. This is required regardless of whether the PI is a co-author.
-2. **Check the authorship policy** — Review the [Authorship & Attribution Policy](https://exelang.org/authorship) on the project website. Co-authorship may be expected depending on the contribution level of other team members.
-3. **Confirm data version** — Identify the exact version of the dataset you used (available in your analysis scripts or the REDCap export log) and include it in your methods section.
+All publications must cite the three scientific archives that make all of this work possible.
 
-## Citing the Dataset
+### Homebank
 
-Use the following citation format for the ExELang dataset itself (in addition to any papers you cite):
+All publications using a HomeBank corpus must include two citations:
+  1. the reference for the specific corpus used, as listed in the corpus documentation page on HomeBank.
+  2. the following reference for the archive itself:
+  VanDam M, Warlaumont AS, Bergelson E, Cristia A, Soderstrom M, De Palma P., MacWhinney B. (2016). HomeBank: An online repository of daylong child-centered audio recordings. Seminars in Speech and Language, 37, 128–141. DOI: 10.1055/s-0036-1580745
 
-**APA format:**
-> ExELang Consortium. (Year). *ExELang Cross-Linguistic Corpus* \[Data set, Version X.X\]. Databrary. https://doi.org/XXXXX
+For full citation rules, see: [https://talkbank.org/homebank/rules.html](https://talkbank.org/homebank/rules.html)
 
-The current DOI and version number are always available on the [Databrary volume page](https://databrary.org/exelang).
+### Databrary
 
-For papers that used Databrary-hosted video data specifically, also add:
+Each dataset on Databrary has its own DOI and an automatically generated citation available on its volume page. The standard format is:
 
-> Data were shared via Databrary (Adolph et al., 2017). Access was authorised under the ExELang project (Volume XXXX).
+> Author(s) (year). Title of dataset. Databrary. https://doi.org/10.17910/XXXXX
 
-## In the Methods Section
+To find the citation for a specific dataset, navigate to its volume page on Databrary. For general information, see: [https://databrary.org](https://databrary.org)
 
-Include the following elements:
+### The language Archive (TLA)
 
-- The name and version of the dataset
-- The specific subset used (e.g. language, age group, collection wave)
-- A statement that ethical approval was obtained (include your local ethics reference number)
-- A statement that participants provided informed consent for data sharing via Databrary
+The language archive automatically generates a citation for each collection. The format is:
 
-**Example wording:**
-> Data were drawn from the ExELang Cross-Linguistic Corpus (Version 2.1; ExELang Consortium, 2024), specifically the French-speaking subsample collected in Wave 2 (N = 48, age range: 18–24 months). All procedures were approved by \[Institution\] Ethics Board (Ref: XXXX). Participants' guardians provided written informed consent, including consent to share data on Databrary.
+> Author(s) (year). Title of collection. The Language Archive. https://hdl.handle.net/XXXXX (Accessed YYYY-MM-DD)
 
-## Acknowledgements Section
+The citation is available directly on the collection page in the archive. For general information, see: [https://archive.mpi.nl/tla](https://archive.mpi.nl/tla)
 
-Include the following acknowledgement (edit as appropriate):
+## Model Development and Benchmarking Publications
 
-> This work was supported by the ExELang project. The authors thank all participating families and the ExELang data collection teams across sites. \[Add any specific funding acknowledgements relevant to your paper — check the project website for the current funder list.\]
+When custodians publish work that falls within the defined scope of the consortium — that is, work specifically concerned with the development, training, evaluation, or benchmarking of automated models — they are entitled to do so without including corpus collectors as co-authors. The custodians' obligation in such cases is to: Cite each dataset used, following the citation guidelines outlined above for the relevant archive. Note that in rare cases, citing everyone may not be possible; see scenario 1 below
 
-## After Acceptance
+!!! example Example
 
-1. **Share the accepted manuscript** — Send a PDF to the project coordinator for the publications registry.
-2. **Update the Databrary record** — If your paper introduces new coding or derived variables, discuss with the PI whether these should be added back to the Databrary volume.
-3. **Post a preprint** — The project encourages preprints on PsyArXiv. If you post one, add the ExELang tag.
+    Okko submits a paper at Interspeech presenting a neural network that has been trained using data from several corpora as well as several others. Each corpus is cited in the references. No corpus collector co-authorship is required because they made no contributions to the paper’s intellectual content.
+
+!!! example Scenario 1
+
+    **Situation:** A custodian is submitting a paper to a conference which limits the number of citations to 10. It is therefore impossible for the custodian to comply with the requirement of citing all datasets and the three archives.
+    **Correct procedure:** The custodian should cite the three archives in the main reference list and have an additional reference list including all dataset citations. The custodian should also email the corpus collectors so that they are aware of this unusual situation and don’t discover it later on.
+
+## Research Beyond Model Development: Consultation Requirement
+
+When custodians intend to use consortium data for research that addresses substantive scientific questions beyond model performance — for example, cross-linguistic analysis of child-directed speech, or developmental trajectory modeling — they must notify each affected corpus collector in advance. The notification must:
+
+- Describe the research question and the planned use of the data.
+- Offer the corpus collector the option to withdraw their data from the specific project within a certain time frame. We suggest giving at least two weeks for the reply to arrive, and more over holiday times (which vary across countries, with some concentration around July-August in the Northern hemisphere, January-February in the Southern hemisphere).
+- Offer the corpus collector the option to participate as a co-author, 	subject to their meeting standard co-authorship criteria as defined 	by the relevant journal or conference. Make sure to spell out what precise contributions are expected and the ideal timeline for them.
+
+!!! example Example
+
+    Sho proposes a paper examining phonological variation in child-directed speech across multiple language communities using consortium corpora. Each corpus collector whose data is involved must be notified and offered the option to withdraw their data or join as co-author.
+
+## Bilateral Agreements
+
+The rules in Sections 4.1 and 4.2 represent the minimum baseline applicable to all ExELang Consortium members. Corpus collectors are free to negotiate separate bilateral agreements with custodians, modify, or extend these baseline terms.
+
+!!! warning Warning
+
+    This section is incomplete for the time being
