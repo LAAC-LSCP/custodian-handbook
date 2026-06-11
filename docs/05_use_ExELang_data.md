@@ -4,35 +4,6 @@ This section explains how to access and navigate ExELang datasets, whether you a
 
 ---
 
-## Getting the Data
-
-ExELang datasets are hosted on [GIN (G-Node Infrastructure)](https://gin.g-node.org) and managed with [DataLad](https://www.datalad.org). DataLad lets you clone a dataset repository without immediately downloading all the large audio files — you get the structure and metadata first, and pull the actual data only when needed.
-
-### Cloning a Dataset
-
-```bash
-datalad clone https://gin.g-node.org/LAAC-LSCP/<dataset-name>
-cd <dataset-name>
-```
-
-This gives you the full folder structure, metadata, and annotation files, but audio files will appear as broken symlinks until you download them.
-
-### Downloading Audio Files
-
-**Before October 2026**, audio files are served directly from GIN. Use `datalad get` to download the files you need:
-
-```bash
-# Download a specific file
-datalad get recordings/raw/my_recording.wav
-
-# Download all raw recordings
-datalad get recordings/raw/
-```
-
-**After October 2026**, files will no longer be available from GIN and must be retrieved from the archive linked to the specific dataset — either [Databrary](https://databrary.org), [HomeBank](https://homebank.talkbank.org), or [The Language Archive](https://archive.mpi.nl). Once downloaded from the relevant archive, place the files in the `recordings/` folder of the cloned repo:
-
----
-
 ## Dataset Structure
 
 ### Recordings
