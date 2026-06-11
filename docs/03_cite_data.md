@@ -58,7 +58,7 @@ When custodians intend to use consortium data for research that addresses substa
 
 ## Bilateral Agreements
 
-The rules in Sections 4.1 and 4.2 represent the minimum baseline applicable to all ExELang Consortium members. Corpus collectors are free to negotiate separate bilateral agreements with custodians, modify, or extend these baseline terms.
+The rules in previous sections [\[a\]](#model-development-and-benchmarking-publications) and [\[b\]](#research-beyond-model-development-consultation-requirement) represent the minimum baseline applicable to all ExELang Consortium members. Corpus collectors are free to negotiate separate bilateral agreements with custodians, modify, or extend these baseline terms.
 
 !!! warning Warning
 
