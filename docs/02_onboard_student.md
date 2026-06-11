@@ -1,3 +1,9 @@
+---
+title: Onboarding new student / collaborator
+description: ;steps to go through when a new student or collaborator needs access to the data
+icon: lucide/user-round-plus
+---
+
 # How to Onboard a New Student/Collaborator
 
 This guide is for supervisors and lab managers setting up access for a new student needing acces to the data. Complete each step — some steps require waiting for account approvals.

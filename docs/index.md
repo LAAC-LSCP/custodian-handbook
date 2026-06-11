@@ -1,3 +1,9 @@
+---
+title: Landing page od the custodian handbook
+description: Introduction and general rules of the custodian handbook
+icon: lucide/flask-conical
+---
+
 # Custodian Handbook
 
 Welcome to the Custodian Handbook. This document is intended for custodian collaborators of the ExELang project. It is meant to help researchers, research assistants, engineers and students, as well as help with onboarding new team members. It contains resources about rights and responsibilities as a custodian and data user, and provides step-by-step instructions for the most common tasks in our workflow.

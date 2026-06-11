@@ -1,3 +1,9 @@
+---
+title: Citation practices
+description: rules about citing when writing and submitting papers using the data
+icon: material/license
+---
+
 # Citation practices
 
 Any publication, thesis, conference presentation, or preprint that uses ExELang data must follow these citation and disclosure guidelines. This protects participants, acknowledges contributors fairly, and maintains the project's data governance commitments.
@@ -39,7 +45,7 @@ When custodians publish work that falls within the defined scope of the consorti
 
     Okko submits a paper at Interspeech presenting a neural network that has been trained using data from several corpora as well as several others. Each corpus is cited in the references. No corpus collector co-authorship is required because they made no contributions to the paper’s intellectual content.
 
-!!! example Scenario 1
+!!! example Scenario-1
 
     **Situation:** A custodian is submitting a paper to a conference which limits the number of citations to 10. It is therefore impossible for the custodian to comply with the requirement of citing all datasets and the three archives.
     **Correct procedure:** The custodian should cite the three archives in the main reference list and have an additional reference list including all dataset citations. The custodian should also email the corpus collectors so that they are aware of this unusual situation and don’t discover it later on.

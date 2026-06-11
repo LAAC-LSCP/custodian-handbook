@@ -1,3 +1,9 @@
+---
+title: Using ExELang Data
+description: tips and libraries to use to use the datasets and their data
+icon: lucide/code-xml
+---
+
 # Using ExELang Data
 
 This section explains how to access and navigate ExELang datasets, whether you are working with them locally or on the platform.
