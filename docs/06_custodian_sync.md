@@ -21,6 +21,7 @@ The dataset structure (including the names of the data files) are stored and sha
 ### Branches
 
 Multiple branches will be created for each dataset:
+
  1. `main` branch: this branch is zthe main version of the dataset, it must stay in a valid state and be usable for analysis. Custodians may merge to this branch but must never directly edit it.
  2. personal branch: Each custodian will own a branch for each dataset. They are free to use and modify that branch freely. They are encouraged to maintain the branch updated in the gin server as well.
  3. working branches: Custodian are free to create and share working branches on GIN, they must preface the branch name with their name
