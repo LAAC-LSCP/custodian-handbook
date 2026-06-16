@@ -1,5 +1,5 @@
 ---
-title: Landing page od the custodian handbook
+title: Landing page of the custodian handbook
 description: Introduction and general rules of the custodian handbook
 icon: "fontawesome/solid/book"
 ---
